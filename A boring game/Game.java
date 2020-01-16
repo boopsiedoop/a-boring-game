@@ -36,12 +36,23 @@ public class Game
         Room myHouse, town, shop, house1, house2, house3, caveEntrance, caveRoom1, caveRoom2, caveRoom3, caveRoom4, caveRoom5, caveRoom6, caveRoom7, theEnd;
       
         // create the rooms
-        myHouse = new Room("in your house, you just woke up and decided to get some food." +"\n"+ "As you walk into your living room you see that there is dirt everywhere, you call for you mother but no one awnsers." +"\n"+"You start to think, because your mom is always at home"+"/n"+"You get the idea that maybe a cave monster came into the house and took your mom, judging from the dirt and small pebbles scattered all over the house.");
-        town = new Room("in the town, you decide to ask a few people if they have seen you mother or if they know more about the cave.");
-        shop = new Room("in the shop, you wanna get the best goodies but you have no monney so you try to convince the shopkeeper to give you something for free which he does!! LUCKY YOU");
-        house1 = new Room("in the blue house, there is a nice lady here." +"\n"+"This lady sure does know a lot about your mother she seems to be kind of a stalker."+"\n"+"While you are a bit creeped out she did tell you that she heard your mom scream, now you are sure that those monster took her and you are going to get her back" );
-        house2 = new Room("in the red house, there is a grumpy old man here." +"\n"+"He doesn't want to hear anything from you and says you are stupid for even thinking about going into that cave, it is much to dangerous"+"\n"+"He tells me that to even have a chance i need the best sword in the townshop");
-        house3 = new Room("in the brown house, there is a young man here, you recognize him as the weird adventurer who isn't in town often"+"\n"+"You ask him if he has ever been in the cave to which he reponds that he doesn't dare to go in because of the huge monster that is rumoured to be in the cave."+"\n"+"He tells me that maybe i can do it to save my mom but to be very carefull with how i treat the monsters"+"\n"+"Even some monsters have feeling others however need to be defeated quickly");
+        myHouse = new Room("in your house, you just woke up and decided to get some food." +"\n"+
+            "As you walk into your living room you see that there is dirt everywhere, you call for you mother but no one awnsers." +"\n"+
+            "You start to think, your mom is always at home so where is she? She would tell you if she went into town"+"/n"+
+            "You get the idea that maybe a monster from the cave came into the house and took your mom, judging from the dirt and small pebbles scattered all over the house.");
+        town = new Room("in the town, you decide to ask a few people if they have seen your mother or if they know more about the cave.");
+        shop = new Room("in the shop, you wanna get the best goodies but you have no money."+"\n"+
+            "You try to convince the shopkeeper to give you something for free which he does!! LUCKY YOU");
+        house1 = new Room("in the blue house, there is a nice lady here." +"\n"+
+            "This lady sure does know a lot about your mother, she seems to be kind of a stalker."+"\n"+
+            "While you are a bit creeped out, she did tell you that she heard your mom scream, now you are sure that those monster took her and you are going to get her back" );
+        house2 = new Room("in the red house, there is a grumpy old man here." +"\n"+
+            "He doesn't want to hear anything from you and says you are stupid for even thinking about going into that cave, 'it is much to dangerous' he said"+"\n"+
+            "He tells you that to even have a chance you need the best sword in the townshop");
+        house3 = new Room("in the brown house, there is a young man here, you recognize him as the weird adventurer who isn't in town often"+"\n"+
+            "You ask him if he has ever been in the cave to which he reponds that he doesn't dare to go in because of the huge monster that is rumoured to be in the cave."+"\n"+
+            "He tells you that you might be able to do it, but to be very carefull with how you treat those monsters"+"\n"+
+            "Some monsters have feelings, others however need to be defeated quickly");
         caveEntrance = new Room("in a big cave, you see a few tunnels leading deeper into the cave the middle one seems to be locked.");
         caveRoom1 = new Room("in the cave");
         caveRoom2 = new Room("in the cave");
@@ -50,7 +61,9 @@ public class Game
         caveRoom5 = new Room("in the cave");
         caveRoom6 = new Room("in the cave");
         caveRoom7 = new Room("in the cave");
-        theEnd = new Room("wow you have defeated the big bad guy and got your mom back, congrats"+"\n"+"i hope you somewhat enjoyed this little game"+"\n"+"You can go and quit the game now u did it");
+        theEnd = new Room("Done wow, you have defeated the big bad guy and got your mom back, congrats!"+"\n"+
+            "we hope you somewhat enjoyed this little game"+"\n"+
+            "You can go and quit the game now you did it");
         
         
         // initialise room exits
