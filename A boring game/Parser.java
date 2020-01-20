@@ -37,8 +37,7 @@ public class Parser
         String inputLine;   // will hold the full input line
         String word1 = null;
         String word2 = null;
-        String word3 = null;
-
+       
         System.out.print("> ");     // print prompt
 
         inputLine = reader.nextLine();
@@ -49,13 +48,9 @@ public class Parser
             word1 = tokenizer.next();      // get first word
             if(tokenizer.hasNext()) {
                 word2 = tokenizer.next();// get second word
-                if(tokenizer.hasNext()) {
-                    word3 = tokenizer.next();      // get third word
-                    // note: we just ignore the rest of the input line.
-                }   
             }
         }
-        return new Command(commands.getCommandWord(word1), word2, word3);
+        return new Command(commands.getCommandWord(word1), word2);
     
     }
 

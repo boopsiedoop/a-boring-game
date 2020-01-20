@@ -1,3 +1,4 @@
+import java.util.Stack;
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -19,16 +20,29 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+    private Stack <Room> rooms;  
     /**
      * Create the game and initialise its internal map.
      */
     public Game() 
     {
         createRooms();
+        //createItem();
         parser = new Parser();
+        rooms = new Stack();
     }
 
+    /*private void createItem(){
+       Item key1,key2;
+       
+       key1 = new Item(2);
+       key2 = new Item(2);
+       
+       key1.setItem("first key", key1);
+       key2.setItem("second key", key2);
+       
+    }
+    */
     /**
      * Create all the rooms and link their exits together.
      */
@@ -37,28 +51,28 @@ public class Game
         Room myHouse, town, house1, house2, house3, caveEntrance, caveRoom1, caveRoom2, caveRoom3, caveRoom4, caveRoom5, caveRoom6, caveRoom7;
       
         // create the rooms
-        myHouse = new Room("in your house, you just woke up and decided to get some food." +"\n"+ " As you walk into you living room you see that there is dirt everywhere, you call for you mother but no one awnsers." +"\n"+" you think it may have been a cave monster judging from the dirt and small pebbles scattered all over the house.");
-        town = new Room("in the town, you decide to ask a few people if they have seen you mother or if they know more abot the cave.");
-        house1 = new Room("in the blue house, there is a nice lady here.");
-        house2 = new Room("in the red house, there is a grumpy old man here.");
-        house3 = new Room("in the brown house, there is a young man here, you recognize him as the weird adventurer.");
-        caveEntrance = new Room("in a big cave, you see a few tunnels leading deeper into the cave the middle one seems to be locked.");
-        caveRoom1 = new Room("in the cave");
-        caveRoom2 = new Room("in the cave");
-        caveRoom3 = new Room("in the cave");
-        caveRoom4 = new Room("in the cave");
-        caveRoom5 = new Room("in the cave");
-        caveRoom6 = new Room("in the cave");
-        caveRoom7 = new Room("in the cave");
+        myHouse = new Room("in your house, you just woke up and decided to get some food." +"\n"+ " As you walk into you living room you see that there is dirt everywhere, you call for you mother but no one awnsers." +"\n"+" you think it may have been a cave monster judging from the dirt and small pebbles scattered all over the house.", true);
+        town = new Room("in the town, you decide to ask a few people if they have seen you mother or if they know more abot the cave.",true);
+        house1 = new Room("in the blue house, there is a nice lady here.",true);
+        house2 = new Room("in the red house, there is a grumpy old man here.",true);
+        house3 = new Room("in the brown house, there is a young man here, you recognize him as the weird adventurer.",true);
+        caveEntrance = new Room("in a big cave, you see a few tunnels leading deeper into the cave the middle one seems to be locked.",false);
+        caveRoom1 = new Room("in the cave", true);
+        caveRoom2 = new Room("in the cave", true);
+        caveRoom3 = new Room("in the cave", true);
+        caveRoom4 = new Room("in the cave", false);
+        caveRoom5 = new Room("in the cave", true);
+        caveRoom6 = new Room("in the cave", true);
+        caveRoom7 = new Room("in the cave", true);
         
         
         // initialise room exits
         myHouse.setExit("outside", town);
          
         town.setExit("cave", caveEntrance);
-        town.setExit("blue house", house1);
-        town.setExit("red house", house2);
-        town.setExit("brown house", house3);
+        town.setExit("blue.house", house1);
+        town.setExit("red.house", house2);
+        town.setExit("brown.house", house3);
 
         house1.setExit("outside", town);
 
@@ -68,20 +82,21 @@ public class Game
         
         caveEntrance.setExit("outside", town);
         caveEntrance.setExit("left", caveRoom1);
-        caveEntrance.setExit("little less left", caveRoom2);
+        caveEntrance.setExit("little.less.left", caveRoom2);
         caveEntrance.setExit("mid-left", caveRoom3);
-        caveEntrance.setExit("middle room", caveRoom4);
+        caveEntrance.setExit("middle.room", caveRoom4);
         caveEntrance.setExit("mid-right", caveRoom5);
-        caveEntrance.setExit("little less right", caveRoom6);
+        caveEntrance.setExit("little.less.right", caveRoom6);
         caveEntrance.setExit("right", caveRoom7);
         
-        caveRoom1.setExit("main cave", caveEntrance);
-        caveRoom2.setExit("main cave", caveEntrance);
-        caveRoom3.setExit("main cave", caveEntrance);
-        caveRoom4.setExit("main cave", caveEntrance);
-        caveRoom5.setExit("main cave", caveEntrance);
-        caveRoom6.setExit("main cave", caveEntrance);
-        caveRoom7.setExit("main cave", caveEntrance);
+        caveRoom1.setExit("main.cave", caveEntrance);
+        caveRoom2.setExit("main.cave", caveEntrance);
+        caveRoom3.setExit("main.cave", caveEntrance);
+        caveRoom4.setExit("main.cave", caveEntrance);
+        caveRoom5.setExit("main.cave", caveEntrance);
+        caveRoom6.setExit("main.cave", caveEntrance);
+        caveRoom7.setExit("main.cave", caveEntrance);
+        
 
         currentRoom = myHouse;  // start game outside
     }
@@ -131,7 +146,7 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         switch (commandWord) {
-             case UNKNOWN:
+            case UNKNOWN:
                 System.out.println("I don't know what you mean... Try a different command");
                 break;
 
@@ -145,6 +160,13 @@ public class Game
 
             case QUIT:
                 wantToQuit = quit(command);
+                break;
+            case BACK:
+                back(command);
+                break;
+                
+            case ABOUT:
+                System.out.println("This game was made by Bart and Daniëlle.");
                 break;
         }
         return wantToQuit;
@@ -186,9 +208,13 @@ public class Game
         if (nextRoom == null) {
             System.out.println("well, you can try but that's a wall");
         }
-        else {
+        else if(nextRoom.access == true){
+            
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+        }
+        else{
+            System.out.println("i think you need something");
         }
     }
 
@@ -206,5 +232,15 @@ public class Game
         else {
             return true;  // signal that we want to quit
         }
+    }
+    
+    private void back(Command command) {
+        if(rooms.size()>0){
+                    currentRoom = rooms.pop();
+                    System.out.println(currentRoom.getLongDescription());
+                }
+                else{
+                    System.out.println("you can't go back any further");
+                }
     }
 }
