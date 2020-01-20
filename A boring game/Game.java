@@ -57,13 +57,13 @@ public class Game
         town = new Room("in the town, you decide to ask a few people if they have seen your mother or if they know more about the cave.",true);
         shop = new Room("in the shop, you wanna get the best goodies but you have no money."+"\n"+
             "You try to convince the shopkeeper to give you something for free which he does!! LUCKY YOU",true);
-        house1 = new Room("in the blue house, there is a nice lady here." +"\n"+
+        house1 = new Room("in the wooden house, there is a nice lady here." +"\n"+
             "This lady sure does know a lot about your mother, she seems to be kind of a stalker."+"\n"+
             "While you are a bit creeped out, she did tell you that she heard your mom scream, now you are sure that those monster took her and you are going to get her back",true );
-        house2 = new Room("in the red house, there is a grumpy old man here." +"\n"+
+        house2 = new Room("in the old house, there is a grumpy old man here." +"\n"+
             "He doesn't want to hear anything from you and says you are stupid for even thinking about going into that cave, 'it is much to dangerous' he said"+"\n"+
             "He tells you that to even have a chance you need the best sword in the townshop",true);
-        house3 = new Room("in the brown house, there is a young man here, you recognize him as the weird adventurer who isn't in town often"+"\n"+
+        house3 = new Room("in the brick house, there is a young man here, you recognize him as the weird adventurer who isn't in town often"+"\n"+
             "You ask him if he has ever been in the cave to which he reponds that he doesn't dare to go in because of the huge monster that is rumoured to be in the cave."+"\n"+
             "He tells you that you might be able to do it, but to be very carefull with how you treat those monsters"+"\n"+
             "Some monsters have feelings, others however need to be defeated quickly",true);
@@ -83,9 +83,9 @@ public class Game
         myHouse.setExit("outside", town);
          
         town.setExit("cave", caveEntrance);
-        town.setExit("blue.house", house1);
-        town.setExit("red.house", house2);
-        town.setExit("brown.house", house3);
+        town.setExit("wood.house", house1);
+        town.setExit("old.house", house2);
+        town.setExit("brick.house", house3);
         town.setExit("shop", shop);
         
         shop.setExit("outside", town);
@@ -97,11 +97,11 @@ public class Game
         
         caveEntrance.setExit("outside", town);
         caveEntrance.setExit("left", caveRoom1);
-        caveEntrance.setExit("little.less.left", caveRoom2);
+        caveEntrance.setExit("less.left", caveRoom2);
         caveEntrance.setExit("mid-left", caveRoom3);
         caveEntrance.setExit("middle.room", caveRoom4);
         caveEntrance.setExit("mid-right", caveRoom5);
-        caveEntrance.setExit("little.less.right", caveRoom6);
+        caveEntrance.setExit("less.right", caveRoom6);
         caveEntrance.setExit("right", caveRoom7);
         
         caveRoom1.setExit("main.cave", caveEntrance);
@@ -175,6 +175,7 @@ public class Game
              case QUIT:
                 wantToQuit = quit(command);
                 break;
+                
             case BACK:
                 back(command);
                 break;
@@ -228,7 +229,7 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
         else{
-            System.out.println("i think you need something");
+            System.out.println("i think you need something to go here");
         }
     }
 
