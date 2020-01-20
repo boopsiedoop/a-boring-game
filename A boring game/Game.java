@@ -52,23 +52,26 @@ public class Game
         // create the rooms
         myHouse = new Room("in your house, you just woke up and decided to get some food." +"\n"+
             "As you walk into your living room you see that there is dirt everywhere, you call for you mother but no one awnsers." +"\n"+
-            "You start to think, your mom is always at home so where is she? She would tell you if she went into town"+"/n"+
-            "You get the idea that maybe a monster from the cave came into the house and took your mom, judging from the dirt and small pebbles scattered all over the house.",true);
+            "You start to think, your mom is always at home so where is she? She would tell you if she went into town"+"\n"+
+            "You get the idea that maybe a monster from the cave came into the house and took your mom,"+"\n"+
+            "judging from the dirt and small pebbles scattered all over the house.",true);
         town = new Room("in the town, you decide to ask a few people if they have seen your mother or if they know more about the cave.",true);
         shop = new Room("in the shop, you wanna get the best goodies but you have no money."+"\n"+
             "You try to convince the shopkeeper to give you something for free which he does!! LUCKY YOU",true);
         house1 = new Room("in the wooden house, there is a nice lady here." +"\n"+
             "This lady sure does know a lot about your mother, she seems to be kind of a stalker."+"\n"+
-            "While you are a bit creeped out, she did tell you that she heard your mom scream, now you are sure that those monster took her and you are going to get her back",true );
+            "While you are a bit creeped out, she did tell you that she heard your mom scream,"+"\n"+
+            "now you are sure that those monster took her and you are going to get her back",true );
         house2 = new Room("in the old house, there is a grumpy old man here." +"\n"+
             "He doesn't want to hear anything from you and says you are stupid for even thinking about going into that cave, 'it is much to dangerous' he said"+"\n"+
             "He tells you that to even have a chance you need the best sword in the townshop",true);
         house3 = new Room("in the brick house, there is a young man here, you recognize him as the weird adventurer who isn't in town often"+"\n"+
-            "You ask him if he has ever been in the cave to which he reponds that he doesn't dare to go in because of the huge monster that is rumoured to be in the cave."+"\n"+
+            "You ask him if he has ever been in the cave to which he reponds that he doesn't dare to go in,"+"\n"+
+            "because of the huge monster that is rumoured to be in the cave."+"\n"+
             "He tells you that you might be able to do it, but to be very carefull with how you treat those monsters"+"\n"+
             "Some monsters have feelings, others however need to be defeated quickly",true);
-        caveEntrance = new Room("in a big cave, you see a few tunnels leading deeper into the cave the middle one seems to be locked.",true);
-        caveRoom1 = new Room("in the cave",false);
+        caveEntrance = new Room("in a big cave, you see a few tunnels leading deeper into the cave the middle one seems to be locked.",false);
+        caveRoom1 = new Room("in the cave",true);
         caveRoom2 = new Room("in the cave",true);
         caveRoom3 = new Room("in the cave",true);
         caveRoom4 = new Room("in the cave",false);
@@ -114,7 +117,7 @@ public class Game
         caveRoom7.setExit("main.cave", caveEntrance);
         
         currentRoom = myHouse;  // start game in  house
-  }
+    }
 
 
     /**
@@ -122,10 +125,8 @@ public class Game
      */
     public void play(){            
         printWelcome();
-
         // Enter the main command loop.  Here we repeatedly read commands and
-        // execute them until the game is over.
-                
+        // execute them until the game is over.          
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -142,8 +143,10 @@ public class Game
         System.out.println("Welcome to our game!");
         System.out.println("this is an incredibly boring adventure game. but at least try to enjoy it");
         System.out.println("in this game you will be playing as a young adventurous kid" );
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
+        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("you can use these commands: ");   
+        parser.showCommands();
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -224,7 +227,7 @@ public class Game
             System.out.println("well, you can try but that's a wall");
         }
         else if(nextRoom.access == true){
-            
+            rooms.push(currentRoom);
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
@@ -251,11 +254,11 @@ public class Game
     
     private void back(Command command) {
         if(rooms.size()>0){
-                    currentRoom = rooms.pop();
+           currentRoom = rooms.pop();
                     System.out.println(currentRoom.getLongDescription());
-                }
-                else{
-                    System.out.println("you can't go back any further");
-                }
+       }
+       else{
+           System.out.println("you can't go back any further");
+       }
     }
 }

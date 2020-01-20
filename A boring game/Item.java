@@ -7,14 +7,14 @@ import java.util.Set;
  * @version (a version number or a date)
  */
 
-/*
+
 public class Item
 {
     public int weight;
     private String descr;
     private HashMap<String, Item> items;  
    
-    public Item(String description) 
+    public Item(String name) 
     {
         items = new HashMap<>();
     }
@@ -28,16 +28,6 @@ public class Item
     public void setItem(String desc,Item item) 
     {
         items.put(desc, item);
-    }
-    
-    public String getItemsString()
-    {
-        String returnString = "Directions:";
-        Set<String> keys = items.keySet();
-        for(String items : keys) {
-            returnString += " " + items + "," ;
-        }
-        return returnString;
     }   
 }
-*/
+
