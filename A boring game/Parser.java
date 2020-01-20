@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 /**
  * This class is part of the "World of Zuul" application. 
  * "World of Zuul" is a very simple, text based adventure game.  
@@ -37,7 +36,7 @@ public class Parser
         String inputLine;   // will hold the full input line
         String word1 = null;
         String word2 = null;
-       
+
         System.out.print("> ");     // print prompt
 
         inputLine = reader.nextLine();
@@ -53,7 +52,7 @@ public class Parser
         return new Command(commands.getCommandWord(word1), word2);
     
     }
-
+    
     /**
      * Print out a list of valid command words.
      */

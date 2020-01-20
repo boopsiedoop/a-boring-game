@@ -31,8 +31,8 @@ public class Game
         parser = new Parser();
         rooms = new Stack();
     }
-
-    /*private void createItem(){
+    /*
+    private void createItem(){
        Item key1,key2;
        
        key1 = new Item(2);
@@ -46,25 +46,38 @@ public class Game
     /**
      * Create all the rooms and link their exits together.
      */
-    private void createRooms()
-    {
-        Room myHouse, town, house1, house2, house3, caveEntrance, caveRoom1, caveRoom2, caveRoom3, caveRoom4, caveRoom5, caveRoom6, caveRoom7;
+    private void createRooms(){
+        Room myHouse, town, shop, house1, house2, house3, caveEntrance, caveRoom1, caveRoom2, caveRoom3, caveRoom4, caveRoom5, caveRoom6, caveRoom7, theEnd;
       
         // create the rooms
-        myHouse = new Room("in your house, you just woke up and decided to get some food." +"\n"+ " As you walk into you living room you see that there is dirt everywhere, you call for you mother but no one awnsers." +"\n"+" you think it may have been a cave monster judging from the dirt and small pebbles scattered all over the house.", true);
-        town = new Room("in the town, you decide to ask a few people if they have seen you mother or if they know more abot the cave.",true);
-        house1 = new Room("in the blue house, there is a nice lady here.",true);
-        house2 = new Room("in the red house, there is a grumpy old man here.",true);
-        house3 = new Room("in the brown house, there is a young man here, you recognize him as the weird adventurer.",true);
-        caveEntrance = new Room("in a big cave, you see a few tunnels leading deeper into the cave the middle one seems to be locked.",false);
-        caveRoom1 = new Room("in the cave", true);
-        caveRoom2 = new Room("in the cave", true);
-        caveRoom3 = new Room("in the cave", true);
-        caveRoom4 = new Room("in the cave", false);
-        caveRoom5 = new Room("in the cave", true);
-        caveRoom6 = new Room("in the cave", true);
-        caveRoom7 = new Room("in the cave", true);
-        
+        myHouse = new Room("in your house, you just woke up and decided to get some food." +"\n"+
+            "As you walk into your living room you see that there is dirt everywhere, you call for you mother but no one awnsers." +"\n"+
+            "You start to think, your mom is always at home so where is she? She would tell you if she went into town"+"/n"+
+            "You get the idea that maybe a monster from the cave came into the house and took your mom, judging from the dirt and small pebbles scattered all over the house.",true);
+        town = new Room("in the town, you decide to ask a few people if they have seen your mother or if they know more about the cave.",true);
+        shop = new Room("in the shop, you wanna get the best goodies but you have no money."+"\n"+
+            "You try to convince the shopkeeper to give you something for free which he does!! LUCKY YOU",true);
+        house1 = new Room("in the blue house, there is a nice lady here." +"\n"+
+            "This lady sure does know a lot about your mother, she seems to be kind of a stalker."+"\n"+
+            "While you are a bit creeped out, she did tell you that she heard your mom scream, now you are sure that those monster took her and you are going to get her back",true );
+        house2 = new Room("in the red house, there is a grumpy old man here." +"\n"+
+            "He doesn't want to hear anything from you and says you are stupid for even thinking about going into that cave, 'it is much to dangerous' he said"+"\n"+
+            "He tells you that to even have a chance you need the best sword in the townshop",true);
+        house3 = new Room("in the brown house, there is a young man here, you recognize him as the weird adventurer who isn't in town often"+"\n"+
+            "You ask him if he has ever been in the cave to which he reponds that he doesn't dare to go in because of the huge monster that is rumoured to be in the cave."+"\n"+
+            "He tells you that you might be able to do it, but to be very carefull with how you treat those monsters"+"\n"+
+            "Some monsters have feelings, others however need to be defeated quickly",true);
+        caveEntrance = new Room("in a big cave, you see a few tunnels leading deeper into the cave the middle one seems to be locked.",true);
+        caveRoom1 = new Room("in the cave",false);
+        caveRoom2 = new Room("in the cave",true);
+        caveRoom3 = new Room("in the cave",true);
+        caveRoom4 = new Room("in the cave",false);
+        caveRoom5 = new Room("in the cave",true);
+        caveRoom6 = new Room("in the cave",true);
+        caveRoom7 = new Room("in the cave",true);
+        theEnd = new Room("Done wow, you have defeated the big bad guy and got your mom back, congrats!"+"\n"+
+            "we hope you somewhat enjoyed this little game"+"\n"+
+            "You can go and quit the game now you did it",false);
         
         // initialise room exits
         myHouse.setExit("outside", town);
@@ -73,11 +86,13 @@ public class Game
         town.setExit("blue.house", house1);
         town.setExit("red.house", house2);
         town.setExit("brown.house", house3);
+        town.setExit("shop", shop);
+        
+        shop.setExit("outside", town);
+        
 
         house1.setExit("outside", town);
-
         house2.setExit("outside", town);
-
         house3.setExit("outside", town);
         
         caveEntrance.setExit("outside", town);
@@ -93,19 +108,19 @@ public class Game
         caveRoom2.setExit("main.cave", caveEntrance);
         caveRoom3.setExit("main.cave", caveEntrance);
         caveRoom4.setExit("main.cave", caveEntrance);
+        caveRoom4.setExit("theEnd", theEnd);
         caveRoom5.setExit("main.cave", caveEntrance);
         caveRoom6.setExit("main.cave", caveEntrance);
         caveRoom7.setExit("main.cave", caveEntrance);
         
+        currentRoom = myHouse;  // start game in  house
+  }
 
-        currentRoom = myHouse;  // start game outside
-    }
 
     /**
      *  Main play routine.  Loops until end of play.
      */
-    public void play() 
-    {            
+    public void play(){            
         printWelcome();
 
         // Enter the main command loop.  Here we repeatedly read commands and
@@ -122,14 +137,13 @@ public class Game
     /**
      * Print out the opening message for the player.
      */
-    private void printWelcome()
-    {
+    private void printWelcome(){
         System.out.println();
         System.out.println("Welcome to our game!");
         System.out.println("this is an incredibly boring adventure game. but at least try to enjoy it");
-        System.out.println("in this game you will be playing as a young adventurous boy" );
-        System.out.println ();
+        System.out.println("in this game you will be playing as a young adventurous kid" );
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println();
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -150,15 +164,15 @@ public class Game
                 System.out.println("I don't know what you mean... Try a different command");
                 break;
 
-            case HELP:
+             case HELP:
                 printHelp();
                 break;
 
-            case GO:
+             case GO:
                 goRoom(command);
                 break;
 
-            case QUIT:
+             case QUIT:
                 wantToQuit = quit(command);
                 break;
             case BACK:

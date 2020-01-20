@@ -6,6 +6,7 @@ import java.util.Set;
  * @author (your name)
  * @version (a version number or a date)
  */
+
 /*
 public class Item
 {
@@ -17,9 +18,8 @@ public class Item
     {
         items = new HashMap<>();
     }
-    /**
-     * Constructor for objects of class Item
-     
+    
+   
     public Item( int weight)
     {
         this.weight = weight;
@@ -38,7 +38,6 @@ public class Item
             returnString += " " + items + "," ;
         }
         return returnString;
-  }   
-   
+    }   
 }
- **/
+*/

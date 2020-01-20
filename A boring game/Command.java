@@ -32,7 +32,7 @@ public class Command
     public Command(CommandWord commandWord, String secondWord)
     {
         this.commandWord = commandWord;
-        this.secondWord = secondWord;        
+        this.secondWord = secondWord;
     }
 
     /**
@@ -52,7 +52,7 @@ public class Command
     {
         return secondWord;
     }
-    
+
     /**
      * @return true if this command was not understood.
      */
@@ -68,6 +68,5 @@ public class Command
     {
         return (secondWord != null);
     }
-    
-}
 
+}
