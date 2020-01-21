@@ -11,15 +11,17 @@ import java.util.Iterator;
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  me
+ * @version 0
  */
 
 public class Room 
 {
     public boolean access;
     private String description;
-    private HashMap<String, Room> exits;        // stores exits of this room.
+    private HashMap<String, Room> exits; 
+    public String name;
+    // stores exits of this room.
 
     /**
      * Create a room described "description". Initially, it has
@@ -27,10 +29,11 @@ public class Room
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description, boolean access) 
+    public Room(String description, boolean access, String name) 
     {
         this.description = description;
         this.access = access;
+        this.name = name;
         exits = new HashMap<>();
     }
     
@@ -69,16 +72,19 @@ public class Room
      * "Exits: north west".
      * @return Details of the room's exits.
      */
+    
     private String getExitString()
     {
         String returnString = "Directions:";
         Set<String> keys = exits.keySet();
         for(String exit : keys) {
-            returnString += " " + exit + "," ;
+            returnString += " " + exit + "" ;
+        }
+        if (returnString == "Directions:" ){
+           returnString = "";
         }
         return returnString;
     }
-
     /**
      * Return the room that is reached if we go from this room in direction
      * "direction". If there is no room in that direction, return null.

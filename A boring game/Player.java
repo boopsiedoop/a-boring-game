@@ -2,8 +2,8 @@
 /**
  * Write a description of class player here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author me
+ * @version 0
  */
 public class Player
 {

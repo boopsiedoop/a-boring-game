@@ -6,8 +6,8 @@ import java.util.HashMap;
  * This class holds an enumeration of all command words known to the game.
  * It is used to recognise commands as they are typed in.
  *
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  me
+ * @version 0
  */
 
 public class CommandWords
@@ -61,7 +61,7 @@ public class CommandWords
     public void showAll() 
     {
         for(String command : validCommands.keySet()) {
-            System.out.print(command + ", ");
+            System.out.print(command + " ");
         }
         System.out.println();
     }

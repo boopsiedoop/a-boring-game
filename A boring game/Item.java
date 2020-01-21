@@ -3,8 +3,8 @@ import java.util.Set;
 /**
  * Write a description of class Item here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author me
+ * @version 0
  */
 
 
@@ -12,17 +12,12 @@ public class Item
 {
     public int weight;
     private String descr;
-    private HashMap<String, Item> items;  
-   
-    public Item(String name) 
-    {
-        items = new HashMap<>();
-    }
+    private HashMap<String, Item> items = new HashMap<>();  
     
-   
-    public Item( int weight)
+    public void Item( int weight,String desc, Item item)
     {
         this.weight = weight;
+        items.put(desc, item);
     }
     
     public void setItem(String desc,Item item) 
@@ -30,4 +25,3 @@ public class Item
         items.put(desc, item);
     }   
 }
-
