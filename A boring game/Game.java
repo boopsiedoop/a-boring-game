@@ -22,29 +22,42 @@ public class Game
     private Room currentRoom;
     private Stack <Room> rooms;
     private int visitedShop = 0;
-   
+    
+    public static void main(String[] args){
+        Game g = new Game();
+        g.play();
+    }
+    
     /**
      * Create the game and initialise its internal map.
      */
     public Game() 
     {
         createRooms();
-        //createItem();
         parser = new Parser();
         rooms = new Stack();
     }
-   /*
+ 
     private void createItem(){
-       Item key1,key2;
+       Item key1, key2, key3, key4, key5; 
        
-       key1 = new Item(2);
-       key2 = new Item(2);
+       key1 = new Item();
+       key2 = new Item();
+       key3 = new Item();
+       key4 = new Item();
+       key5 = new Item();
        
-       key1.setItem("first key", key1);
-       key2.setItem("second key", key2);
+       key1.setItem("1", key1);
        
+       key2.setItem("2", key2);
+       
+       key3.setItem("3", key3);
+       
+       key4.setItem("4", key4);
+       
+       key5.setItem("5", key5);
     }
-    */
+    
     /**
      * Create all the rooms and link their exits together.
      */
@@ -245,13 +258,14 @@ public class Game
             System.out.println();
             System.out.println(currentRoom.getLongDescription());
         }
-        else if(nextRoom.access == true || nextRoom.name == "caveEntrance" && visitedShop > 0){
+        else if(nextRoom.access == true ||
+        nextRoom.name == "caveEntrance" && visitedShop > 0){
             rooms.push(currentRoom);
             currentRoom = nextRoom;
             
             if (currentRoom.name == "shop"){
                 visitedShop = 1;
-            }
+             }
             
             System.out.println();
             System.out.println(currentRoom.getLongDescription());

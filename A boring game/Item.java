@@ -10,7 +10,22 @@ import java.util.Set;
 
 public class Item
 {
-    public int weight;
+   private HashMap<String, Item> keys;
+   int bigKey = 0;
+   public void setItem(String name, Item item) 
+    {
+        keys.put(name, item);
+    }
+   
+   public int bigKey(){
+       if(keys.size() == 5){
+           bigKey = 1;
+       }
+       return bigKey;
+    }
+     
+    
+   /* public int weight;
     private String descr;
     private HashMap<String, Item> items = new HashMap<>();  
     
@@ -23,5 +38,5 @@ public class Item
     public void setItem(String desc,Item item) 
     {
         items.put(desc, item);
-    }   
+    } */  
 }
