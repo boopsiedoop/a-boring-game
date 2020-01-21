@@ -27,11 +27,11 @@ public class Game
     public Game() 
     {
         createRooms();
-        //createItem();
+        createItem();
         parser = new Parser();
         rooms = new Stack();
     }
-    /*
+   
     private void createItem(){
        Item key1,key2;
        
@@ -42,7 +42,7 @@ public class Game
        key2.setItem("second key", key2);
        
     }
-    */
+    
     /**
      * Create all the rooms and link their exits together.
      */
