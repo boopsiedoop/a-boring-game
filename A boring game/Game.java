@@ -22,11 +22,8 @@ public class Game
     private Room currentRoom;
     private Stack <Room> rooms;
     private int visitedShop = 0;
-    
-    public static void main(String[] args){
-        Game g = new Game();
-        g.play();
-    }
+    int keys[];
+    int bigKey = 0;
     
     /**
      * Create the game and initialise its internal map.
@@ -34,35 +31,24 @@ public class Game
     public Game() 
     {
         createRooms();
+        createItem();
         parser = new Parser();
         rooms = new Stack();
     }
- 
+    
     private void createItem(){
-       Item key1, key2, key3, key4, key5; 
-       
-       key1 = new Item();
-       key2 = new Item();
-       key3 = new Item();
-       key4 = new Item();
-       key5 = new Item();
-       
-       key1.setItem("1", key1);
-       
-       key2.setItem("2", key2);
-       
-       key3.setItem("3", key3);
-       
-       key4.setItem("4", key4);
-       
-       key5.setItem("5", key5);
-    }
+        keys = new int[5];
+        if (keys.length == 5){
+            bigKey = 1;
+             }      
+      
+     }
     
     /**
      * Create all the rooms and link their exits together.
      */
     private void createRooms(){
-        Room myHouse, town, shop, house1, house2, house3, caveEntrance, caveRoom1, caveRoom2, trapRoom, trap, caveRoom4, caveRoom5, caveRoom6, caveRoom7, theEnd;
+        Room myHouse, town, shop, house1, house2, house3, caveEntrance, caveRoom1, caveRoom2, trapRoom, trap, bossRoom, caveRoom5, caveRoom6, caveRoom7, theEnd, key1, key2, key3, key4, key5, defeat;
       
         // create the rooms
         myHouse = new Room("in your house, you just woke up and decided to get some food." +"\n"+
@@ -78,27 +64,46 @@ public class Game
             "While you are a bit creeped out, she did tell you that she heard your mom scream,"+"\n"+
             "now you are sure that those monster took her and you are going to get her back",true,"house1");
         house2 = new Room("in the old house, there is a grumpy old man here." +"\n"+
-            "He doesn't want to hear anything from you and says you are stupid for even thinking about going into that cave, 'it is much to dangerous' he said"+"\n"+
+            "He doesn't want to hear anything from you and says you are stupid for even thinking about going into that cave, 'it is way to dangerous' he said"+"\n"+
             "He tells you that to even have a chance you need the best sword in the townshop",true,"house2");
         house3 = new Room("in the brick house, there is a young man here, you recognize him as the weird adventurer who isn't in town often"+"\n"+
-            "You ask him if he has ever been in the cave to which he reponds that he doesn't dare to go in,"+"\n"+
+            "You ask him if he has ever been in the cave to which he responds that he doesn't dare to go in,"+"\n"+
             "because of the huge monster that is rumoured to be in the cave."+"\n"+
             "He tells you that you might be able to do it, but to be very carefull with how you treat those monsters"+"\n"+
             "Some monsters have feelings, others however need to be defeated quickly",true,"house3");
         caveEntrance = new Room("in a big cave, you see a few tunnels leading deeper into the cave the middle one seems to be locked.",false,"caveEntrance");
-        caveRoom1 = new Room("in the cave",true,"caveRoom1");
-        caveRoom2 = new Room("in the cave",true,"caveRoom2");
+        caveRoom1 = new Room("in the first room left to the enterance of the cave."+"\n"+
+            "It's a small gloomy room with a small ghost weeping in the corner."+"\n"+
+            "You ask the ghost what is wrong and he tells you he doesn't like being a ghost, because everyone is afraid of him.",true,"caveRoom1");
+        caveRoom2 = new Room("in a new room as you walk in you notice half eaten carrots everywhere."+"\n"+
+            "Then out of nowhere a rabid rabbit comes charging at you",true,"caveRoom2");
+        //traproom
         trapRoom = new Room("in a tunnel, as you keep on walking you notice a hole in the ground"+"\n"+
             "You look down into the hole and see something shiny at the bottom. you are contemplating whether to go into the hole or not",true,"trapRoom");
-        trap = new Room("you slip and die. So that was a horrible desicion, the shiny thing at the bottom of the hole was a rock"+"\n"+
-            "It's pretty sad but you are gonna have to start over now" ,true,"trap");
-        caveRoom4 = new Room("in the cave",false,"caveRoom4");
-        caveRoom5 = new Room("in the cave",true, "caveRoom5");
-        caveRoom6 = new Room("in the cave",true,"caveRoom6");
-        caveRoom7 = new Room("in the cave",true,"caveRoom7");
-        theEnd = new Room("Done wow, you have defeated the big bad guy and got your mom back, congrats!"+"\n"+
+        trap = new Room("going into the hole. You slip and die. So that was a horrible decision, the shiny thing at the bottom of the hole was a rock"+"\n"+
+            "It's pretty sad but you're gonna have to start over now" ,true,"trap");
+            
+        bossRoom = new Room("in the locked room, this seem to be big boss room you see your mom in the corner. you kill big bad guy",false,"bossRoom");
+        
+        caveRoom5 = new Room("entering a new room as you walk in you hear weird noises but can't really see where it comes from because it's too dark."+"\n"+
+            "all of the sudden a skeleton apears in front of you, he is wearing a stylish green suit."+"\n"+
+            "The skeleton greets you.",true, "caveRoom5");
+        caveRoom6 = new Room("in a room covered by a layer of thick blue slime, in the corner of the room you see a blue slime."+"\n"+
+            "he seems pretty friendly, but then you notice he is giving you a really weird stare",true,"caveRoom6");
+        caveRoom7 = new Room("in a new room, as you enter a happy dog greets you, he looks lost."+"\n"+
+            "You recognize the dog, you may have seen him wandering around the village before.",true,"caveRoom7");
+        // keys     
+        key1 = new Room("excited, you obtain the first piece of a key",true,"key1");
+        key2 = new Room("excited, you obtain the second piece of a key",true,"key2");
+        key3 = new Room("excited, you obtain the third piece of a key",true,"key3");
+        key4 = new Room("excited, you obtain the fourth piece of a key",true,"key4");
+        key5 = new Room("excited, you obtain the fifth piece of a key",true,"key5");
+        defeat = new Room("very sad, you made a wrong decision."+"\n"+
+            "You're gonna have to start over now",true,"death");
+        
+        theEnd = new Room("done wow, you have defeated the big bad guy and got your mom back, congrats!"+"\n"+
             "we hope you somewhat enjoyed this little game"+"\n"+
-            "You can go and quit the game now you did it",false,"theEnd");
+            "You can go and quit the game now you did it",true,"theEnd");
         
         // initialise room exits
         myHouse.setExit("outside", town);
@@ -110,8 +115,6 @@ public class Game
         town.setExit("shop", shop);
         
         shop.setExit("outside", town);
-        
-
         house1.setExit("outside", town);
         house2.setExit("outside", town);
         house3.setExit("outside", town);
@@ -120,21 +123,39 @@ public class Game
         caveEntrance.setExit("left", caveRoom1);
         caveEntrance.setExit("less.left", caveRoom2);
         caveEntrance.setExit("mid-left", trapRoom);
-        caveEntrance.setExit("middle.room", caveRoom4);
+        caveEntrance.setExit("middle.room", bossRoom);
         caveEntrance.setExit("mid-right", caveRoom5);
         caveEntrance.setExit("less.right", caveRoom6);
         caveEntrance.setExit("right", caveRoom7);
         
-        caveRoom1.setExit("main.cave", caveEntrance);
-        caveRoom2.setExit("main.cave", caveEntrance);
         trapRoom.setExit("main.cave", caveEntrance);
         trapRoom.setExit("hole", trap);
-        caveRoom4.setExit("main.cave", caveEntrance);
-        caveRoom4.setExit("theEnd", theEnd);
-        caveRoom5.setExit("main.cave", caveEntrance);
-        caveRoom6.setExit("main.cave", caveEntrance);
-        caveRoom7.setExit("main.cave", caveEntrance);
-       
+        
+        //fight
+        caveRoom1.setExit("fight", defeat);
+        caveRoom1.setExit("peaceful", key1);
+        key1.setExit("main.cave", caveEntrance);
+        
+        caveRoom2.setExit("fight", key2);
+        caveRoom2.setExit("peaceful", defeat);
+        key2.setExit("main.cave", caveEntrance);
+        
+        caveRoom5.setExit("fight", defeat);
+        caveRoom5.setExit("peaceful", key3);
+        key3.setExit("main.cave", caveEntrance);
+        
+        caveRoom6.setExit("fight", key4);
+        caveRoom6.setExit("peaceful", defeat);
+        key4.setExit("main.cave", caveEntrance);
+        
+        caveRoom7.setExit("fight", defeat);
+        caveRoom7.setExit("peaceful", key5);
+        key5.setExit("main.cave", caveEntrance);
+        
+        bossRoom.setExit("fight", theEnd);
+        bossRoom.setExit("peaceful", defeat);
+        
+        
         currentRoom = myHouse;  // start game in  house
     }
 
@@ -151,7 +172,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing."+"\n"+" Bye bye.");
+        System.out.println("Thank you for playing."+"\n"+"Bye bye.");
     
     }
 
@@ -190,15 +211,15 @@ public class Game
                 System.out.println("I don't know what you mean... Try a different command");
                 break;
 
-             case HELP:
+            case HELP:
                 printHelp();
                 break;
 
-             case GO:
+            case GO:
                 goRoom(command);
                 break;
 
-             case QUIT:
+            case QUIT:
                 wantToQuit = quit(command);
                 break;
                 
@@ -258,15 +279,48 @@ public class Game
             System.out.println();
             System.out.println(currentRoom.getLongDescription());
         }
-        else if(nextRoom.access == true ||
-        nextRoom.name == "caveEntrance" && visitedShop > 0){
+         else if(nextRoom.name == "death"){
+            currentRoom = nextRoom;
+            System.out.println();
+            System.out.println(currentRoom.getLongDescription());
+            
+            currentRoom = rooms.elementAt(0);
+            rooms.clear();
+            System.out.println();
+            System.out.println(currentRoom.getLongDescription());
+        }
+        else if(nextRoom.name == "bossRoom" &&  bigKey == 1){
             rooms.push(currentRoom);
             currentRoom = nextRoom;
-            
+            System.out.println();
+            System.out.println(currentRoom.getLongDescription());
+        }
+        
+        else if(nextRoom.access == true || nextRoom.name == "caveEntrance" && visitedShop > 0){
+            rooms.push(currentRoom);
+            currentRoom = nextRoom;
             if (currentRoom.name == "shop"){
                 visitedShop = 1;
+            }
+            if (currentRoom.name == "key1"){
+                 keys[0] = 1; 
              }
-            
+            if (currentRoom.name == "key2"){
+                 keys[1] = 1;
+             }
+            if (currentRoom.name == "key3"){
+                 keys[2] = 1;
+             }
+            if (currentRoom.name == "key4"){
+                 keys[3] = 1;
+             }
+            if (currentRoom.name == "key5"){
+                 keys[4] = 1;
+             }
+            System.out.println("visitedshop = " + visitedShop);
+            for (int i = 0; i < keys.length; i++){ 
+                System.out.println("key at index " + i +" : "+ keys[i]); 
+            }                         
             System.out.println();
             System.out.println(currentRoom.getLongDescription());
         }
