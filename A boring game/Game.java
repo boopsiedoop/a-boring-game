@@ -20,10 +20,10 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private Stack <Room> rooms;
-    private int visitedShop = 0;
-    int keys[];
-    int bigKey = 0;
+    private Stack <Room> rooms;// een stack om voor de back functie de kamers in op te slaan
+    private int visitedShop = 0;// variabel om bij te houden of iemand al in de shop geweest is
+    int keys[];// hier worden de sleutels in opgeslagen die je verzameld
+    int bigKey = 0;// zodra je 5 sleutels hebt word bigKey 1
     
     /**
      * Create the game and initialise its internal map.
@@ -33,14 +33,14 @@ public class Game
         createRooms();
         createItem();
         parser = new Parser();
-        rooms = new Stack();
+        rooms = new Stack();// een stack om voor de back functie de kamers in op te slaan
     }
     
     private void createItem(){
         keys = new int[5];
-        if (keys.length == 5){
+        if (keys.length == 5){//voor de grote sleutel heb je 5 kleine stukjes nodig
             bigKey = 1;
-             }      
+        }      
       
      }
     
@@ -107,18 +107,18 @@ public class Game
         
         // initialise room exits
         myHouse.setExit("outside", town);
-         
+        //in town  
         town.setExit("cave", caveEntrance);
         town.setExit("wood.house", house1);
         town.setExit("old.house", house2);
         town.setExit("brick.house", house3);
         town.setExit("shop", shop);
-        
+        // back to town
         shop.setExit("outside", town);
         house1.setExit("outside", town);
         house2.setExit("outside", town);
         house3.setExit("outside", town);
-        
+        //in cave
         caveEntrance.setExit("outside", town);
         caveEntrance.setExit("left", caveRoom1);
         caveEntrance.setExit("less.left", caveRoom2);
@@ -131,7 +131,7 @@ public class Game
         trapRoom.setExit("main.cave", caveEntrance);
         trapRoom.setExit("hole", trap);
         
-        //fight
+        //fight opties
         caveRoom1.setExit("fight", defeat);
         caveRoom1.setExit("peaceful", key1);
         key1.setExit("main.cave", caveEntrance);
@@ -179,7 +179,7 @@ public class Game
     /**
      * Print out the opening message for the player.
      */
-    private void printWelcome(){
+    private void printWelcome(){//zodra het play command is ingevoerd word de eerste description gegeven
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
         System.out.println();
@@ -274,8 +274,8 @@ public class Game
             System.out.println();
             System.out.println(currentRoom.getLongDescription());
             
-            currentRoom = rooms.elementAt(0);
-            rooms.clear();
+            currentRoom = rooms.elementAt(0);// je gaat dood dus ga je terug naar de kamer waar je bent begonnen die is opgeslagen op plek 0
+            rooms.clear();// om te zorgen dat back niet kan worden gebruikt word de stack gewist
             System.out.println();
             System.out.println(currentRoom.getLongDescription());
         }
@@ -289,22 +289,22 @@ public class Game
             System.out.println();
             System.out.println(currentRoom.getLongDescription());
         }
-        else if(nextRoom.name == "bossRoom" &&  bigKey == 1){
+        else if(nextRoom.name == "bossRoom" &&  bigKey == 1){//zodra je een grote sleutel hebt kan je de boss room in
             rooms.push(currentRoom);
             currentRoom = nextRoom;
             System.out.println();
             System.out.println(currentRoom.getLongDescription());
         }
         
-        else if(nextRoom.access == true || nextRoom.name == "caveEntrance" && visitedShop > 0){
+        else if(nextRoom.access == true || nextRoom.name == "caveEntrance" && visitedShop > 0){//als de shop is bezocht kan je in de cave
             rooms.push(currentRoom);
             currentRoom = nextRoom;
-            if (currentRoom.name == "shop"){
+            if (currentRoom.name == "shop"){//check of je in de shop bent zo ja zet variabel op 1
                 visitedShop = 1;
             }
-            if (currentRoom.name == "key1"){
-                 keys[0] = 1; 
-             }
+            if (currentRoom.name == "key1"){// key1 is een ruimte waar je heen gaat als je de goede keuze hebt gemaakt in een monster kamer
+                 keys[0] = 1; // goede keuze dus key1 is behaald
+            }
             if (currentRoom.name == "key2"){
                  keys[1] = 1;
              }

@@ -32,8 +32,8 @@ public class Room
     public Room(String description, boolean access, String name) 
     {
         this.description = description;
-        this.access = access;
-        this.name = name;
+        this.access = access;// ik heb een access boolean gemaakt zodat je pas in een kamer kan als je in goRoom voldoen aan bepaalde voorwaarden
+        this.name = name;// ik heb een name variabel gemaakt zodat ik in goRoom kan vragen wat de currentroom
         exits = new HashMap<>();
     }
     
@@ -81,7 +81,7 @@ public class Room
             returnString += " " + exit + "" ;
         }
         if (returnString == "Directions:" ){
-           returnString = "";
+           returnString = ""; // als er geen kant is waar je heen kan dan is het niet nodig om Directions: neer te zetten dat staat alleen maar lelijk
         }
         return returnString;
     }
