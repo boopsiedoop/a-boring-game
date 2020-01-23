@@ -89,7 +89,7 @@ public class Game
         // cave
         caveEntrance = new Room("in a big cave opening, you see a few tunnels leading deeper into the cave,"+"\n"+
             "the middle one has a door which seems to be locked."+"\n"+
-            "You wil need a big key made op 5 different parts to open it.",false,"caveEntrance");
+            "You wil need a big key made of 5 different parts to open it.",false,"caveEntrance");
         spoopRoom = new Room("in the room left to the enterance of the cave."+"\n"+
             "It's a small gloomy room with a small ghost weeping in the corner."+"\n"+
             "You ask the ghost what is wrong and he tells you he doesn't like being a ghost, because everyone is afraid of him."
@@ -99,7 +99,7 @@ public class Game
             +"\n"+"Will you fight or be peaceful with this monster?",true,"caveRoom2");
         skellyRoom = new Room("entering a new room as you walk in you hear weird noises,"+"\n"+
             "but can't really see where it comes from because it's too dark."+"\n"+
-            "all of the sudden a skeleton apears in front of you, he is wearing a stylish green suit."+"\n"+
+            "all of a sudden a skeleton apears in front of you, he is wearing a stylish green suit."+"\n"+
             "The skeleton greets you."
             +"\n"+"Will you fight or be peaceful with this monster?",true, "caveRoom5");
         goopRoom = new Room("in a room covered by a layer of thick blue slime. Then you notice a blue slime."+"\n"+
@@ -126,7 +126,7 @@ public class Game
             "You obtain the first piece of a key.",true,"key1");
         key2 = new Room("You choose to fight the rabbit. good call, you block him as he charges to your face."+"\n"+
             "He charges at you a few more times before you manage to pin him to the ground and kill him."+"\n"+
-            "After you kil the rabbit he dissapears into thin air and only a key fragment remains."+"\n"+
+            "After you kill the rabbit he dissapears into thin air and only a key fragment remains."+"\n"+
             "You obtain the second piece of a key.",true,"key2");
         key3 = new Room("You choose to be nice to the skeleton."+"\n"+ 
             "You compliment his outfit which seems to bring him joy."+"\n"+
@@ -152,8 +152,8 @@ public class Game
             "Then you notice a small opening Go! now is you chance.",true, "finish");
         //end
         theEnd = new Room("done wow, you have defeated the big bad guy and got your mom back, congrats!"+"\n"+
-            "we hope you somewhat enjoyed this little game"+"\n"+
-            "You can go and quit the game now you did it",true,"theEnd");
+            "I hope you somewhat enjoyed this little game"+"\n"+
+            "You can go and quit the game now, you did it",true,"theEnd");
         
         // initialise room exits
         myHouse.setExit("outside", town);
@@ -282,7 +282,7 @@ public class Game
                 break;
                 
             case ABOUT:
-                System.out.println("This game was made by Daniëlle."+"\n"+"nothing more intresting to it i guess");
+                System.out.println("This game was made by Daniëlle."+"\n"+"Nothing more intresting to it i guess.");
                 break;
                 
             case PLAY:
@@ -379,6 +379,7 @@ public class Game
              }
             if (currentRoom.name == "key5" && bone == 1){
                  keys[4] = 1;
+                 System.out.println();
                  System.out.println("You remember picking up a bone earlier."+"\n"+
                     "You give the bone to the dog and he gives you a very grateful look."+"\n"+
                     "This makes you very happy.");
@@ -392,7 +393,7 @@ public class Game
             // for (int i = 0; i < keys.length; i++){ 
             //  System.out.println("key at index " + i +" : "+ keys[i]); 
             //} 
-            // uncomment to test keys array & shop var!
+            // uncomment to test keys array 'keys' & shop variable!
             System.out.println();
             System.out.println(currentRoom.getLongDescription());
         }
@@ -419,7 +420,7 @@ public class Game
     /** 
      * "Back" was entered. 
      * Check if it is possible to go back.
-     * If going back is possible go back.
+     * If going back is possible, go back.
      * If it is not possible print messsage.
      */
     private void back(Command command) {
@@ -436,7 +437,7 @@ public class Game
      * "Pickup" was entered. 
      * Check if there is something to pickup.
      * If there is nothing to pickup print message.
-     * If there is something to pickup pick it up.
+     * If there is something to pickup, pick it up.
      */
     private void pickUp(){
         if(currentRoom.name == "house2"){
@@ -444,7 +445,7 @@ public class Game
             System.out.println("You picked up a bone!");
             System.out.println("It's pretty disgusting, why did you do that?");
         }
-        else if(currentRoom.name == "goopRoom"){ 
+        else if(currentRoom.name == "caveRoom6"){ 
             pocketGoop = 1;
             System.out.println("You take a handful of thick blue goop and stuff it into your pocket!");
             System.out.println("That's pretty disgusting, why did you do that?");
@@ -454,6 +455,12 @@ public class Game
         }
     }
     
+    /** 
+     * "Catch" was entered. 
+     * Check if there is something to catch.
+     * If there is nothing to catch print message.
+     * If there is something to catch, catch it.
+     */
     private void catchButterfly(){
         if(currentRoom.name == "town"){
             butterfly = 1;

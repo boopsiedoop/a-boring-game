@@ -32,7 +32,7 @@ public class Room
     {
         this.description = description;
         this.access = access;// i have made an access boolean to make it possible to make an room  locked by default
-        this.name = name;// i have giuveb each room a name to mak eit easy to see what the current room is
+        this.name = name;// i have given each room a name to make it easy to see what the current room is
         exits = new HashMap<>();
     }
     
@@ -100,7 +100,7 @@ public class Room
             returnString += " " + exit + "" ;
         }
         if (returnString == "Directions:" ){
-           returnString = ""; // if there are no availible directions why show ' direction: '  
+           returnString = ""; // if there are no availible directions why show 'direction: '  
         }
         return returnString;
     }
