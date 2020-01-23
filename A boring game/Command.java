@@ -1,6 +1,6 @@
 /**
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.  
+ * This class is part of the "A boring game" application. 
+ * "A boring game" is a very boring text based adventure game.  
  *
  * This class holds information about a command that was issued by the user.
  * A command currently consists of two parts: a CommandWord and a string
@@ -13,8 +13,8 @@
  *
  * If the command had only one word, then the second word is <null>.
  * 
- * @author  me
- * @version 0
+ * @author  Daniëlle van der Tuin
+ * @version 23-1-2020
  */
 
 public class Command

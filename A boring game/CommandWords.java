@@ -1,13 +1,13 @@
 import java.util.HashMap;
 /**
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.
+ * This class is part of the "A boring game" application. 
+ * "A boring game" is a very boring text based adventure game.
  * 
  * This class holds an enumeration of all command words known to the game.
  * It is used to recognise commands as they are typed in.
  *
- * @author  me
- * @version 0
+ * @author  Daniëlle van der Tuin
+ * @version 23-1-2020
  */
 
 public class CommandWords

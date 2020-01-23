@@ -1,18 +1,16 @@
-import java.util.Set;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
 /**
  * Class Room - a room in an adventure game.
  *
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.  
+ * This class is part of the "A boring game" application. 
+ * "A boring game" is a very boring text based adventure game.  
  *
  * A "Room" represents one location in the scenery of the game.  It is 
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  me
- * @version 0
+ * @author  Daniëlle van der Tuin
+ * @version 23-1-2020
  */
 
 public class Room 
@@ -24,10 +22,11 @@ public class Room
     // stores exits of this room.
 
     /**
-     * Create a room described "description". Initially, it has
-     * no exits. "description" is something like "a kitchen" or
-     * "an open court yard".
+     * Create a room. Initially, it has no exits.
+     * "description" is something like "a kitchen" or "an open court yard".
      * @param description The room's description.
+     * @param access is whether the room is accesible.
+     * @param name is the name of the room.
      */
     public Room(String description, boolean access, String name) 
     {
@@ -69,7 +68,7 @@ public class Room
 
     /**
      * Return a string describing the room's exits, for example
-     * "Exits: north west".
+     * "Directions: north west".
      * @return Details of the room's exits.
      */
     

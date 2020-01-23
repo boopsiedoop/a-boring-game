@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=CommandWords
-comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\r\n\ \r\n\ This\ class\ holds\ an\ enumeration\ of\ all\ command\ words\ known\ to\ the\ game.\r\n\ It\ is\ used\ to\ recognise\ commands\ as\ they\ are\ typed\ in.\r\n\r\n\ @author\ \ me\r\n\ @version\ 0\r\n
+comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "A\ boring\ game"\ application.\ \r\n\ "A\ boring\ game"\ is\ a\ very\ boring\ text\ based\ adventure\ game.\r\n\ \r\n\ This\ class\ holds\ an\ enumeration\ of\ all\ command\ words\ known\ to\ the\ game.\r\n\ It\ is\ used\ to\ recognise\ commands\ as\ they\ are\ typed\ in.\r\n\r\n\ @author\ \ Dani\u00EBlle\ van\ der\ Tuin\r\n\ @version\ 23-1-2020\r\n
 comment1.params=
 comment1.target=CommandWords()
 comment1.text=\r\n\ Constructor\ -\ initialise\ the\ command\ words.\r\n

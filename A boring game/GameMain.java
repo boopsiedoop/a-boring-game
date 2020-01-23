@@ -1,9 +1,11 @@
 
 /**
- * Write a description of class GameMain here.
+ * class GameMain is used to call the game from outside blueJ
+ * open powershell by holding shift & right-click
+ * enter java GameMain to start the application.
  *
- * @author me
- * @version 0
+ * @author  Daniëlle van der Tuin
+ * @version 23-1-2020
  */
 public class GameMain
 {

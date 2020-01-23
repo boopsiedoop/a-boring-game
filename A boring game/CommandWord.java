@@ -1,9 +1,12 @@
 /**
+ * This class is part of the "A boring game" application. 
+ * "A boring game" is a very boring text based adventure game.
+ * 
  * Representations for all the valid command words for the game
  * along with a string in a particular language.
  * 
- * @author  me
- * @version 0
+ * @author  Daniëlle van der Tuin
+ * @version 23-1-2020
  */
 public enum CommandWord
 {

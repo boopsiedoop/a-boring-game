@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=GameMain
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ GameMain\ here.\r\n\r\n\ @author\ me\r\n\ @version\ 0\r\n
+comment0.text=\r\n\ class\ GameMain\ is\ used\ to\ call\ the\ game\ from\ outside\ blueJ\r\n\ open\ powershell\ by\ holding\ shift\ &\ right-click\r\n\ enter\ java\ GameMain\ to\ start\ the\ application.\r\n\r\n\ @author\ \ Dani\u00EBlle\ van\ der\ Tuin\r\n\ @version\ 23-1-2020\r\n
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
 numComments=2

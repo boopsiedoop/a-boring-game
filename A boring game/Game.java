@@ -1,19 +1,16 @@
 import java.util.*;
 /**
- *  This class is the main class of the "World of Zuul" application. 
- *  "World of Zuul" is a very simple, text based adventure game.  Users 
- *  can walk around some scenery. That's all. It should really be extended 
- *  to make it more interesting!
- * 
- *  To play this game, create an instance of this class and call the "play"
- *  method.
+ *  This class is the main class of the "A boring game" application. 
+ *  "A boring game" as the name suggests is a very boring, text based adventure game.  Users 
+ *  can walk around some scenery. and interact with some monsters. 
+ *  so much fun
  * 
  *  This main class creates and initialises all the others: it creates all
- *  rooms, creates the parser and starts the game.  It also evaluates and
+ *  rooms, creates the keys array,creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  me
- * @version 0
+ * @author  Daniëlle van der Tuin
+ * @version 23-1-2020
  */
 
 public class Game 
@@ -31,14 +28,19 @@ public class Game
     public Game() 
     {
         createRooms();
-        createItem();
+        createKeys();
         parser = new Parser();
         rooms = new Stack();// een stack om voor de back functie de kamers in op te slaan
     }
     
-    private void createItem(){
+    /**
+     * Create all the slots for the keys.
+     * keep checking if keys had reached a length of 5.
+     * if true then create the big key
+     */
+    private void createKeys(){
         keys = new int[5];
-        if (keys.length == 5){//voor de grote sleutel heb je 5 kleine stukjes nodig
+        if (keys.length == 5){
             bigKey = 1;
         }      
       
@@ -177,15 +179,18 @@ public class Game
     }
 
     /**
-     * Print out the opening message for the player.
+     * Print out the first room description.
      */
-    private void printWelcome(){//zodra het play command is ingevoerd word de eerste description gegeven
+    private void printWelcome(){
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
         System.out.println();
         System.out.println("Type 'go' followed by the direction you wish to go" );
     }
     
+    /**
+     * Print out the menu.
+     */
     private void printMenu(){
         System.out.println();
         System.out.println("Welcome to our game!");
@@ -255,6 +260,7 @@ public class Game
     /** 
      * Try to go in one direction. If there is an exit, enter the new
      * room, otherwise print an error message.
+     * check for certain requirements go enter a room
      */
     private void goRoom(Command command){
         if(!command.hasSecondWord()) {
@@ -344,6 +350,12 @@ public class Game
         }
     } 
     
+    /** 
+     * "Back" was entered. 
+     * Check if it is possible to go back.
+     * If going back is possible go back.
+     * If it is not possible print messsage.
+     */
     private void back(Command command) {
         if(rooms.size()>0){
            currentRoom = rooms.pop();
