@@ -63,7 +63,27 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        if(name == "key1"){// this is a battle scene it doesnt need to start with 'you are' 
+            return  description + ".\n" + getExitString();
+        } 
+        else if(name == "key2"){// this is a battle scene it doesnt need to start with 'you are'
+            return  description + ".\n" + getExitString();
+        }
+        else if(name == "key3"){// this is a battle scene it doesnt need to start with 'you are'
+            return  description + ".\n" + getExitString();
+        }
+        else if(name == "key4"){// this is a battle scene it doesnt need to start with 'you are'
+            return  description + ".\n" + getExitString();
+        }
+        else if(name == "key5"){// this is a battle scene it doesnt need to start with 'you are'
+            return  description + ".\n" + getExitString();
+        }
+        else if(name == "finish"){// this is a battle scene it doesnt need to start with 'you are'
+            return  description + ".\n" + getExitString();
+        }
+        else{
+            return "You are " + description + ".\n" + getExitString();
+        }
     }
 
     /**

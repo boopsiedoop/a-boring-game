@@ -23,6 +23,7 @@ public class Game
     private int bigKey = 0;// when you have obtained 5 pieces a big key is made 
     private int bone = 0;
     private int butterfly = 0;
+    private int pocketGoop = 0;
     
     /**
      * Create the game and initialise its internal map.
@@ -46,82 +47,109 @@ public class Game
             bigKey = 1;
         }      
       
-     }
+    }
     
     /**
      * Create all the rooms and link their exits together.
      */
     private void createRooms(){
-        Room myHouse, town, shop, house1, house2, house3, caveEntrance, spoopRoom, caveRoom2, trapRoom, trap, bossRoom, caveRoom5, goopRoom, caveRoom7, theEnd, key1, key2, key3, key4, key5, defeat;
+        Room myHouse, town, shop, house1, house2, house3, caveEntrance, spoopRoom, rabbitRoom, trapRoom, trap, bossRoom, skellyRoom, goopRoom, doggoRoom,
+        theEnd, key1, key2, key3, key4, key5, defeat, finish;
       
         // create the rooms
         // town
         myHouse = new Room("in your house, you just woke up and decided to get some food." +"\n"+
             "As you walk into your living room you see that there is dirt everywhere, you call for you mother but no one awnsers." +"\n"+
-            "You start to think, your mom is always at home so where is she? She would tell you if she went into town"+"\n"+
+            "You start to think, your mom is always at home so where is she? She would tell you if she went into town."+"\n"+
             "You get the idea that maybe a monster from the cave came into the house and took your mom,"+"\n"+
             "judging from the dirt and small pebbles scattered all over the house.",true,"myHouse");  
         town = new Room("in the town, you decide to ask a few people if they have seen your mother or if they know more about the cave."+"\n"+
-            "There is also a small butterfly bush in the town"+"\n"+
+            "There is also a small butterfly bush in the town."+"\n"+
             "If you want to you can try to catch one."+"\n"+
             "Type 'catch' to try and catch one.",true,"town");
         shop = new Room("in the shop, you wanna get the best goodies but you have no money."+"\n"+
-            "You try to convince the shopkeeper to give you something for free which he does!! LUCKY YOU"+"\n"+
-            "He gives you a sword",true,"shop");
+            "You try to convince the shopkeeper to give you something for free which he does!! LUCKY YOU."+"\n"+
+            "He gives you a sword.",true,"shop");
         house1 = new Room("in the wooden house, there is a nice lady here." +"\n"+
             "This lady sure does know a lot about your mother, she seems to be kind of a stalker."+"\n"+
             "While you are a bit creeped out, she did tell you that she heard your mom scream,"+"\n"+
-            "now you are sure that those monster took her and you are going to get her back",true,"house1");
+            "now you are sure that those monster took her and you are going to get her back.",true,"house1");
         house2 = new Room("in the old house, there is a grumpy old man here." +"\n"+
-            "He doesn't want to hear anything from you and says you are stupid for even thinking about going into that cave, 'it is way to dangerous' he said"+"\n"+
-            "He tells you that to even have a chance you need the best sword in the townshop"+"\n"+
-            "While talking to the old man you notice a bone on the ground. you get the urge to pick it up" +"\n"+
+            "He doesn't want to hear anything from you and says you are stupid for even thinking about going into that cave,"+"\n"+
+            "'it is way to dangerous' he said."+"\n"+
+            "He tells you that to even have a chance you need the best sword in the townshop."+"\n"+
+            "While talking to the old man you notice a bone on the ground. you get the urge to pick it up." +"\n"+
             "\n"+
-            "To pickup the bone type 'pickup'",true,"house2");
-        house3 = new Room("in the brick house, there is a young man here, you recognize him as the weird adventurer who isn't in town often"+"\n"+
+            "To pickup the bone type 'pickup'.",true,"house2");
+        house3 = new Room("in the brick house, there is a young man here, you recognize him as the weird adventurer who isn't in town often."+"\n"+
             "You ask him if he has ever been in the cave to which he responds that he doesn't dare to go in,"+"\n"+
             "because of the huge monster that is rumoured to be in the cave."+"\n"+
-            "He tells you that you might be able to do it, but to be very carefull with how you treat those monsters"+"\n"+
-            "Some monsters have feelings, others however need to be defeated quickly",true,"house3");
+            "He tells you that you might be able to do it, but to be very carefull with how you treat those monsters."+"\n"+
+            "Some monsters have feelings, others however need to be defeated quickly.",true,"house3");
         // cave
-        caveEntrance = new Room("in a big cave, you see a few tunnels leading deeper into the cave the middle one seems to be locked.",false,"caveEntrance");
+        caveEntrance = new Room("in a big cave opening, you see a few tunnels leading deeper into the cave,"+"\n"+
+            "the middle one has a door which seems to be locked."+"\n"+
+            "You wil need a big key made op 5 different parts to open it.",false,"caveEntrance");
         spoopRoom = new Room("in the room left to the enterance of the cave."+"\n"+
             "It's a small gloomy room with a small ghost weeping in the corner."+"\n"+
             "You ask the ghost what is wrong and he tells you he doesn't like being a ghost, because everyone is afraid of him."
-            +"\n"+"Will you fight or be peaceful with this monster",true,"caveRoom1");
-        caveRoom2 = new Room("in a new room as you walk in you notice half eaten carrots everywhere."+"\n"+
-            "Then out of nowhere a rabid rabbit comes charging at you"
-            +"\n"+"Will you fight or be peaceful with this monster",true,"caveRoom2");
-        //traproom
-        trapRoom = new Room("in a tunnel, as you keep on walking you notice a hole in the ground"+"\n"+
-            "You look down into the hole and see something shiny at the bottom."+"\n"+
-            "You are contemplating whether to go into the hole or not",true,"trapRoom");
-        trap = new Room("going into the hole. You slip and die. So that was a horrible decision,"+"\n"+
-            "the shiny thing at the bottom of the hole was a rock"+"\n"+
-            "It's pretty sad but you're gonna have to start over now"+"\n"+
-            "Luckily you do keep your items",true,"trap");
-            
-        bossRoom = new Room("in the boss room, this seem to be the big boss room, you see your mom in the corner. you kill big bad guy",false,"bossRoom");
-        
-        caveRoom5 = new Room("entering a new room as you walk in you hear weird noises but can't really see where it comes from because it's too dark."+"\n"+
+            +"\n"+"Will you fight or be peaceful with this monster?",true,"caveRoom1");
+        rabbitRoom = new Room("in a new room as you walk in you notice half eaten carrots everywhere."+"\n"+
+            "Then out of nowhere a rabid rabbit comes charging at you."
+            +"\n"+"Will you fight or be peaceful with this monster?",true,"caveRoom2");
+        skellyRoom = new Room("entering a new room as you walk in you hear weird noises,"+"\n"+
+            "but can't really see where it comes from because it's too dark."+"\n"+
             "all of the sudden a skeleton apears in front of you, he is wearing a stylish green suit."+"\n"+
             "The skeleton greets you."
-            +"\n"+"Will you fight or be peaceful with this monster",true, "caveRoom5");
-        goopRoom = new Room("in a room covered by a layer of thick blue slime, in the corner of the room you see a blue slime."+"\n"+
-            "he seems pretty friendly, but then you notice he is giving you a really weird stare"
-            +"\n"+"Will you fight or be peaceful with this monster",true,"caveRoom6");
-        caveRoom7 = new Room("in the room  right from the entrance, as you enter a happy dog greets you, he looks lost."+"\n"+
+            +"\n"+"Will you fight or be peaceful with this monster?",true, "caveRoom5");
+        goopRoom = new Room("in a room covered by a layer of thick blue slime. Then you notice a blue slime."+"\n"+
+            "You think that maybe that slime is responsible for the mess because he is also blue."+"\n"+
+            "He seems pretty friendly, but then you notice he is giving you a really weird stare."+"\n"+
+            "You get the urge to pick some slime up."+"\n"+"\n"+
+            "To pickup the thick blue slime type 'pickup'."
+            +"\n"+"Will you fight or be peaceful with this monster?",true,"caveRoom6");
+        doggoRoom = new Room("in the room right from the entrance, as you enter a happy dog greets you, he looks lost."+"\n"+
             "You recognize the dog, you may have seen him wandering around the village before."
-            +"\n"+"Will you fight or be peaceful with this monster",true,"caveRoom7");
-        
+            +"\n"+"Will you fight or be peaceful with this monster?",true,"caveRoom7");
+        // trap room    
+        trapRoom = new Room("in a tunnel, as you keep on walking you notice a hole in the ground."+"\n"+
+            "You look down into the hole and see something shiny at the bottom."+"\n"+
+            "You are contemplating whether to go into the hole or not.",true,"trapRoom");
+        trap = new Room("going into the hole. You slip and die. So that was a horrible decision."+"\n"+
+            "The shiny thing at the bottom of the hole was a rock."+"\n"+
+            "It's pretty sad but you're gonna have to start over now."+"\n"+
+            "Luckily you do keep your items.",true,"trap");
         // keys + battle     
-        key1 = new Room("excited, you obtain the first piece of a key",true,"key1");
-        key2 = new Room("excited, you obtain the second piece of a key",true,"key2");
-        key3 = new Room("excited, you obtain the third piece of a key",true,"key3");
-        key4 = new Room("excited, you obtain the fourth piece of a key",true,"key4");
-        key5 = new Room("excited, you obtain the fifth piece of a key",true,"key5");
+        key1 = new Room("You choose to be nice to the ghost. You talk for a bit about his feelings." +"\n"+ 
+            "He tells you he feels better now after ranting for a bit."+"\n"+
+            "He reveals that there is a keyfragment hidden behind a rock and hands it over to you." +"\n"+ 
+            "You obtain the first piece of a key.",true,"key1");
+        key2 = new Room("You choose to fight the rabbit. good call, you block him as he charges to your face."+"\n"+
+            "He charges at you a few more times before you manage to pin him to the ground and kill him."+"\n"+
+            "After you kil the rabbit he dissapears into thin air and only a key fragment remains."+"\n"+
+            "You obtain the second piece of a key.",true,"key2");
+        key3 = new Room("You choose to be nice to the skeleton."+"\n"+ 
+            "You compliment his outfit which seems to bring him joy."+"\n"+
+            "He is a true gentleman, so he will gladly tell you where the key fragment is hidden to help you find your mom."+"\n"+
+            "You obtain the third piece of a key.",true,"key3");
+        key4 = new Room("You choose to fight the blob, you take an aggressive stance."+"\n"+
+            "The blob immediately goes into attack mode."+"\n"+
+            "The blob keps trying to swallow you, to stop him you cut him into really small pieces."+"\n"+ 
+            "In his belly you find a key fragment."+"\n"+
+            "You obtain the fourth piece of a key.",true,"key4");
+        key5 = new Room("You choose to be nice to the doggo, i mean who could hurt this angel."+"\n"+
+            "As the dog snuggles up to you, you notice a key fragment hanging from it's collar."+"\n"+
+            "You obtain the fifth piece of a key.",true,"key5");
         defeat = new Room("very sad, you made a wrong decision."+"\n"+
-            "You're gonna have to start over now",true,"death");
+            "You're gonna have to start over now."+"\n"+
+            "Luckily you do keep your items.",true,"death");
+        //boss room   
+        bossRoom = new Room("in the room located behind the big locked door,"+"\n"+
+            "this seem to be the big boss room, you see your mom in the corner.",false,"bossRoom");
+        finish = new Room("You choose to fight the boss, it isn't an easy fight, you struggle to land a hit."+"\n"+
+            "After a few openings and landed hits he seems to be at the brink of death, then he goes into rage mode."+"\n"+
+            "You notice there are less openings now as the boss is trying desperately to win."+"\n"+
+            "Then you notice a small opening Go! now is you chance.",true, "finish");
         //end
         theEnd = new Room("done wow, you have defeated the big bad guy and got your mom back, congrats!"+"\n"+
             "we hope you somewhat enjoyed this little game"+"\n"+
@@ -129,7 +157,7 @@ public class Game
         
         // initialise room exits
         myHouse.setExit("outside", town);
-        //in town  
+        // in town  
         town.setExit("cave", caveEntrance);
         town.setExit("wood.house", house1);
         town.setExit("old.house", house2);
@@ -140,42 +168,43 @@ public class Game
         house1.setExit("outside", town);
         house2.setExit("outside", town);
         house3.setExit("outside", town);
-        //in cave
+        // in cave
         caveEntrance.setExit("outside", town);
         caveEntrance.setExit("left", spoopRoom);
-        caveEntrance.setExit("less.left", caveRoom2);
+        caveEntrance.setExit("less.left", rabbitRoom);
         caveEntrance.setExit("mid-left", trapRoom);
         caveEntrance.setExit("middle.room", bossRoom);
-        caveEntrance.setExit("mid-right", caveRoom5);
+        caveEntrance.setExit("mid-right", skellyRoom);
         caveEntrance.setExit("less.right", goopRoom);
-        caveEntrance.setExit("right", caveRoom7);
+        caveEntrance.setExit("right", doggoRoom);
         
         trapRoom.setExit("main.cave", caveEntrance);
         trapRoom.setExit("hole", trap);
         
-        //fight opties
+        // fight opties
         spoopRoom.setExit("fight", defeat);
         spoopRoom.setExit("peaceful", key1);
         key1.setExit("main.cave", caveEntrance);
         
-        caveRoom2.setExit("fight", key2);
-        caveRoom2.setExit("peaceful", defeat);
+        rabbitRoom.setExit("fight", key2);
+        rabbitRoom.setExit("peaceful", defeat);
         key2.setExit("main.cave", caveEntrance);
         
-        caveRoom5.setExit("fight", defeat);
-        caveRoom5.setExit("peaceful", key3);
+        skellyRoom.setExit("fight", defeat);
+        skellyRoom.setExit("peaceful", key3);
         key3.setExit("main.cave", caveEntrance);
         
         goopRoom.setExit("fight", key4);
         goopRoom.setExit("peaceful", defeat);
         key4.setExit("main.cave", caveEntrance);
         
-        caveRoom7.setExit("fight", defeat);
-        caveRoom7.setExit("peaceful", key5);
+        doggoRoom.setExit("fight", defeat);
+        doggoRoom.setExit("peaceful", key5);
         key5.setExit("main.cave", caveEntrance);
         
-        bossRoom.setExit("fight", theEnd);
+        bossRoom.setExit("fight", finish);
         bossRoom.setExit("peaceful", defeat);
+        finish.setExit("last.hit", theEnd);
         
         
         currentRoom = myHouse;  // start game in  house
@@ -415,6 +444,11 @@ public class Game
             System.out.println("You picked up a bone!");
             System.out.println("It's pretty disgusting, why did you do that?");
         }
+        else if(currentRoom.name == "goopRoom"){ 
+            pocketGoop = 1;
+            System.out.println("You take a handful of thick blue goop and stuff it into your pocket!");
+            System.out.println("That's pretty disgusting, why did you do that?");
+        }
         else{
             System.out.println("Uhh, there is nothing to pick up here");
         }
@@ -426,7 +460,7 @@ public class Game
             System.out.println("Wow, you caught a butterfly!"); 
         }
         else{
-            System.out.println("Uhm what are you trying to catch");
+            System.out.println("Uhm, what are you trying to catch");
         }
     }
     
